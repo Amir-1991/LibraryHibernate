@@ -30,8 +30,8 @@ public class userEntity {
     @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "IS_WRITER")
-    private boolean isWriter;
+    @Column(name = "IS_ARTIST")
+    private boolean isArtist;
 
 
     public userEntity() {
@@ -43,14 +43,14 @@ public class userEntity {
                       String nationalCode,
                       LocalDateTime birthday,
                       String password,
-                      boolean isWriter) {
+                      boolean isArtist) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationalCode = nationalCode;
         this.birthday = birthday;
         this.password = password;
-        this.isWriter = isWriter;
+        this.isArtist = isArtist;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class userEntity {
                 ", nationalCode='" + nationalCode + '\'' +
                 ", birthday=" + birthday +
                 ", password='" + password + '\'' +
-                ",isWriter='" + isWriter + '\'' +
+                ",isArtist='" + isArtist + '\'' +
                 '}';
     }
 
@@ -123,11 +123,11 @@ public class userEntity {
         this.password = password;
     }
 
-    public boolean isWriter() {
-        return isWriter;
+    public boolean isArtist() {
+        return isArtist;
     }
 
-    public void setWriter(boolean writer) {
-        isWriter = writer;
+    public void setWriter(boolean artist) {
+        isArtist = artist;
     }
 }
