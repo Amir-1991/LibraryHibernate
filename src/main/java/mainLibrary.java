@@ -16,6 +16,8 @@ public class mainLibrary {
                 case "1":
                     userSignUp.creatUser();
                     break;
+                case "2":
+
                 default:
                     break;
             }

@@ -2,6 +2,7 @@ package userManager;
 
 import config.constantValue;
 import entity.userEntity;
+import repository.userRepository;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -57,6 +58,7 @@ public class userSignUp {
                 System.out.println("Your Date Is Not Match Of Date Format");
             }
         } while (!resScanner.matches(constantValue.DATE_FORMATTER_REGEX));
+        userRepository.save();
         System.out.println("Congratulations Your Register Account Has Successful Please LohIn In Your Account ");
     }
 
