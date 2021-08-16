@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class userSignUp {
     public static void creatUser() {
         Scanner scanner = new Scanner(System.in);
-        boolean isFirstTime = true;
         userEntity newUser = new userEntity();
         String resScanner;
         do {

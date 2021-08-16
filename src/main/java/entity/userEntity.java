@@ -9,28 +9,28 @@ public class userEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "ID", length = 10)
     private Long id;
 
-    @Column(name = "USER_NAME")
+    @Column(name = "USER_NAME", length = 50, unique = true)
     private String userName;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "FIRST_NAME", length = 30)
     private String firstName;
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", length = 30)
     private String lastName;
 
-    @Column(name = "NATIONAL_CODE")
+    @Column(name = "NATIONAL_CODE", length = 10, unique = true)
     private String nationalCode;
 
     @Column(name = "BIRTHDAY")
     private LocalDate birthday;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", length = 20)
     private String password;
 
-    @Column(name = "ROLL_USER")
+    @Column(name = "ROLL_USER", length = 10)
     private String rollUser;
 
 
