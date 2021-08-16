@@ -1,4 +1,5 @@
 import config.constantValue;
+import userManager.userSignUp;
 
 import java.util.Scanner;
 
@@ -10,10 +11,13 @@ public class mainLibrary {
                 "3: Exit ");
         Scanner scanner = new Scanner(System.in);
         String firstOperation = scanner.next();
-        while (firstOperation.matches(constantValue.menuRegex)) {
+        while (firstOperation.matches(constantValue.MENU_REGEX)) {
             switch (firstOperation) {
                 case "1":
-
+                    userSignUp.creatUser();
+                    break;
+                default:
+                    break;
             }
         }
     }

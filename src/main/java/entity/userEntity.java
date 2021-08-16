@@ -1,7 +1,7 @@
 package entity;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "USER")
@@ -25,13 +25,13 @@ public class userEntity {
     private String nationalCode;
 
     @Column(name = "BIRTHDAY")
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "IS_ARTIST")
-    private boolean isArtist;
+    @Column(name = "ROLL_USER")
+    private String rollUser;
 
 
     public userEntity() {
@@ -41,16 +41,16 @@ public class userEntity {
                       String firstName,
                       String lastName,
                       String nationalCode,
-                      LocalDateTime birthday,
+                      LocalDate birthday,
                       String password,
-                      boolean isArtist) {
+                      String rollUser) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationalCode = nationalCode;
         this.birthday = birthday;
         this.password = password;
-        this.isArtist = isArtist;
+        this.rollUser = rollUser;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class userEntity {
                 ", nationalCode='" + nationalCode + '\'' +
                 ", birthday=" + birthday +
                 ", password='" + password + '\'' +
-                ",isArtist='" + isArtist + '\'' +
+                ", rollUser='" + rollUser + '\'' +
                 '}';
     }
 
@@ -107,11 +107,11 @@ public class userEntity {
         this.nationalCode = nationalCode;
     }
 
-    public LocalDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -123,11 +123,11 @@ public class userEntity {
         this.password = password;
     }
 
-    public boolean isArtist() {
-        return isArtist;
+    public String getRollUser() {
+        return rollUser;
     }
 
-    public void setWriter(boolean artist) {
-        isArtist = artist;
+    public void setRollUser(String rollUser) {
+        this.rollUser = rollUser;
     }
 }
