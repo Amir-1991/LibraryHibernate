@@ -27,12 +27,11 @@ public class userEntity {
     @Column(name = "BIRTHDAY")
     private LocalDate birthday;
 
+    @Column(name = "PHONE_NUMBER",length = 11)
+    private String phoneNumber;
+
     @Column(name = "PASSWORD", length = 20)
     private String password;
-
-    @Column(name = "ROLL_USER", length = 10)
-    private String rollUser;
-
 
     public userEntity() {
     }
@@ -42,15 +41,15 @@ public class userEntity {
                       String lastName,
                       String nationalCode,
                       LocalDate birthday,
-                      String password,
-                      String rollUser) {
+                      String phoneNumber,
+                      String password) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationalCode = nationalCode;
         this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
         this.password = password;
-        this.rollUser = rollUser;
     }
 
     @Override
@@ -62,8 +61,8 @@ public class userEntity {
                 ", lastName='" + lastName + '\'' +
                 ", nationalCode='" + nationalCode + '\'' +
                 ", birthday=" + birthday +
+                ", phoneNumber=" + phoneNumber +
                 ", password='" + password + '\'' +
-                ", rollUser='" + rollUser + '\'' +
                 '}';
     }
 
@@ -115,6 +114,14 @@ public class userEntity {
         this.birthday = birthday;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -123,11 +130,4 @@ public class userEntity {
         this.password = password;
     }
 
-    public String getRollUser() {
-        return rollUser;
-    }
-
-    public void setRollUser(String rollUser) {
-        this.rollUser = rollUser;
-    }
 }

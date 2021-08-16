@@ -18,9 +18,7 @@ public class userSignUp {
                     "2: Reader ");
             resScanner = scanner.next();
             if (resScanner.equals("1")) {
-                newUser.setRollUser("Artist");
             } else if (resScanner.equals("2")) {
-                newUser.setRollUser("Reader");
             }else System.out.println("Your Input Value Not Valid");
         } while (!resScanner.matches(constantValue.MENU_REGEX));
         showSignInMessage("User Name");
@@ -57,6 +55,15 @@ public class userSignUp {
                 System.out.println("Your Date Is Not Match Of Date Format");
             }
         } while (!resScanner.matches(constantValue.DATE_FORMATTER_REGEX));
+        do {
+            showSignInMessage("Phone Number");
+            resScanner = scanner.next();
+            if (resScanner.matches(constantValue.PHONE_NUMBER_REGEX)){
+                newUser.setPhoneNumber(resScanner);
+            }else {
+                System.out.println("Valid Phone Number Is 11 Number Please TryAgain");
+            }
+        }while (!resScanner.matches(constantValue.PHONE_NUMBER_REGEX));
         userRepository.save();
         System.out.println("Congratulations Your Register Account Has Successful Please LohIn In Your Account ");
     }
