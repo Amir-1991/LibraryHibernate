@@ -16,8 +16,17 @@ public class userRepository {
             session.save(newUser);
             transaction.commit();
         } finally {
-
+            sessionFactory.close();
         }
-        sessionFactory.close();
+    }
+
+    public static void load(){
+        Configuration configuration = new Configuration().configure();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+//        try {
+//            userEntity user = session.get(userEntity.class,newUser.getId)
+//        }
     }
 }
