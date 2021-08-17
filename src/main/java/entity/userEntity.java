@@ -33,6 +33,9 @@ public class userEntity {
     @Column(name = "PASSWORD", length = 20)
     private String password;
 
+    @Column(name = "ROLL_TITLE")
+    private String rollTitle;
+
     public userEntity() {
     }
 
@@ -42,7 +45,8 @@ public class userEntity {
                       String nationalCode,
                       LocalDate birthday,
                       String phoneNumber,
-                      String password) {
+                      String password,
+                      String rollTitle) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,6 +54,7 @@ public class userEntity {
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.rollTitle = rollTitle;
     }
 
     @Override
@@ -63,6 +68,7 @@ public class userEntity {
                 ", birthday=" + birthday +
                 ", phoneNumber=" + phoneNumber +
                 ", password='" + password + '\'' +
+                ", rollTitle='" + rollTitle + '\'' +
                 '}';
     }
 
@@ -130,4 +136,11 @@ public class userEntity {
         this.password = password;
     }
 
+    public String getRollTitle() {
+        return rollTitle;
+    }
+
+    public void setRollTitle(String rollTitle) {
+        this.rollTitle = rollTitle;
+    }
 }

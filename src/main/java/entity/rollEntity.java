@@ -1,7 +1,5 @@
 package entity;
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,27 +7,28 @@ import javax.persistence.*;
 public class rollEntity {
 
     @Id
-    @Column(name = "ID" ,length = 1)
+    @Column(name = "ID", length = 1)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ROLL_NAME")
-    private String rollName;
+    @Column(name = "ROLL_TITLE")
+    private String rollTitle;
 
     public rollEntity() {
     }
 
-    public rollEntity(String rollName) {
-        this.rollName = rollName;
+    public rollEntity(String rollTitle) {
+        this.rollTitle = rollTitle;
     }
 
     @Override
     public String toString() {
         return "rollEntity{" +
                 "id=" + id +
-                ", rollName='" + rollName + '\'' +
+                ", rollTitle='" + rollTitle + '\'' +
                 '}';
     }
+
 
     public Long getId() {
         return id;
@@ -39,11 +38,11 @@ public class rollEntity {
         this.id = id;
     }
 
-    public String getRollName() {
-        return rollName;
+    public String getRollTitle() {
+        return rollTitle;
     }
 
-    public void setRollName(String rollName) {
-        this.rollName = rollName;
+    public void setRollTitle(String rollTitle) {
+        this.rollTitle = rollTitle;
     }
 }
