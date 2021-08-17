@@ -35,4 +35,15 @@ public class userRepository {
         session.close();
         return resList;
     }
+
+    public static void updateUser(){
+
+    }
+
+    public static void deleteUser() {
+
+    }
+
+    public static void updateUserSession() {
+    }
 }

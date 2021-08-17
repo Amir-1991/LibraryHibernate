@@ -22,7 +22,7 @@ public class userSignIn {
         }else if (!resUser.get(0).getPassword().equals(logInfo.get(1))){
             System.out.println("Password Is Wrong ");
         }else{
-            userDashboard.mainDashboard(resUser);
+            adminDashboard.mainDashboard(resUser);
         }
     }
 

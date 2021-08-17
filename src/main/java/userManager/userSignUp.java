@@ -66,8 +66,6 @@ public class userSignUp {
             resScanner = scanner.next();
             if (resScanner.matches(constantValue.PHONE_NUMBER_REGEX)) {
                 newUser.setPhoneNumber(resScanner);
-                System.out.println(resScanner);
-                System.out.println(newUser.getPhoneNumber());
             } else {
                 System.out.println("Valid Phone Number Is 11 Number Please TryAgain");
             }

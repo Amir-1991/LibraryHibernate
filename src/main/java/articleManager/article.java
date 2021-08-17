@@ -1,6 +1,7 @@
 package articleManager;
 
 import entity.articleEntity;
+import repository.articleRepository;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class article {
         newArticle.setContent(scanner.next());
         newArticle.setCreatDate(LocalDate.now());
         newArticle.setPublished(false);
+        articleRepository.creatArticle(newArticle);
         System.out.println("Congratulations Your Article Has Been Created \n" +
                 "NOTE: Your Article Now Is NonAccessibility For Another Users" +
                 "      You Can Change It In Setting -> Edit Your Article");
