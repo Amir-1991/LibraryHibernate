@@ -18,23 +18,24 @@ public class userSignUp {
                     "2: Reader ");
             resScanner = scanner.next();
             if (resScanner.equals("1")) {
+
             } else if (resScanner.equals("2")) {
             }else System.out.println("Your Input Value Not Valid");
         } while (!resScanner.matches(constantValue.MENU_REGEX));
-        showSignInMessage("User Name");
+        showSignUpMessage("User Name");
         newUser.setUserName(scanner.next());
         do {
-            showSignInMessage("First Name");
+            showSignUpMessage("First Name");
             resScanner = scanner.next();
             newUser.setFirstName(resScanner);
         } while (!resScanner.matches(constantValue.NAME_REGEX));
         do {
-            showSignInMessage("Last Name");
+            showSignUpMessage("Last Name");
             resScanner = scanner.next();
             newUser.setLastName(resScanner);
         } while (!resScanner.matches(constantValue.NAME_REGEX));
         do {
-            showSignInMessage("National Code");
+            showSignUpMessage("National Code");
             resScanner = scanner.next();
             if (resScanner.matches(constantValue.NATIONAL_CODE_REGEX)) {
                 newUser.setNationalCode(resScanner);
@@ -46,7 +47,7 @@ public class userSignUp {
             }
         }while (!resScanner.matches(constantValue.NATIONAL_CODE_REGEX));
         do {
-            showSignInMessage("Birthday With This Format: yyyy-MM-dd");
+            showSignUpMessage("Birthday With This Format: yyyy-MM-dd");
             resScanner = scanner.next();
             if (resScanner.matches(constantValue.DATE_FORMATTER_REGEX)){
                 LocalDate birthDay = LocalDate.parse(resScanner);
@@ -56,19 +57,21 @@ public class userSignUp {
             }
         } while (!resScanner.matches(constantValue.DATE_FORMATTER_REGEX));
         do {
-            showSignInMessage("Phone Number");
+            showSignUpMessage("Phone Number");
             resScanner = scanner.next();
             if (resScanner.matches(constantValue.PHONE_NUMBER_REGEX)){
                 newUser.setPhoneNumber(resScanner);
+                System.out.println(resScanner);
+                System.out.println(newUser.getPhoneNumber());
             }else {
                 System.out.println("Valid Phone Number Is 11 Number Please TryAgain");
             }
         }while (!resScanner.matches(constantValue.PHONE_NUMBER_REGEX));
-        userRepository.save();
+        userRepository.save(newUser);
         System.out.println("Congratulations Your Register Account Has Successful Please LohIn In Your Account ");
     }
 
-    public static void showSignInMessage(String inputMsg) {
+    public static void showSignUpMessage(String inputMsg) {
         System.out.println("Please Enter Your " + inputMsg);
     }
 }

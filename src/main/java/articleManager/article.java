@@ -9,7 +9,6 @@ public class article {
     public static void creatArticle(){
         Scanner scanner = new Scanner(System.in);
         articleEntity newArticle = new articleEntity();
-        String artScanner ;
         showSignInMessage("Article Name");
         newArticle.setTitle(scanner.next());
         showSignInMessage("Brief");

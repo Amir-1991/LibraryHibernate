@@ -3,16 +3,18 @@ package repository;
 import entity.userEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class userRepository {
-    public static void save() {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    public static void save(userEntity newUser) {
+        Configuration configuration = new Configuration().configure();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         try {
-            session.getTransaction().begin();
-            session.save(new userEntity());
-            session.getTransaction().commit();
+            session.save(newUser);
+            transaction.commit();
         } finally {
 
         }
