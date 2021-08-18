@@ -37,6 +37,6 @@ public class articleRepository {
             sessionFactory.close();
     }
 
-    public static void deleteArticle() {
+    public static void deleteArticle(List<String> deleteArticle) {
     }
 }

@@ -4,7 +4,6 @@ import articleManager.article;
 import categoryManager.category;
 import config.constantValue;
 import entity.userEntity;
-import repository.articleRepository;
 import repository.categoryRepository;
 import repository.userRepository;
 
@@ -16,9 +15,9 @@ public class adminDashboard {
         if (resUser.get(0).getRollTitle().equals("admin")) {
             adminDashboard(resUser);
         } else if (resUser.get(0).getRollTitle().equals("writer")) {
-            writerDashboard(resUser);
+            userDashboard.writerDashboard(resUser);
         } else if (resUser.get(0).getRollTitle().equals("reader")) {
-            readerDashboard(resUser);
+            userDashboard.readerDashboard(resUser);
         }
     }
 
@@ -27,12 +26,12 @@ public class adminDashboard {
         Scanner adminScanner = new Scanner(System.in);
         String adminChoice;
         do {
-            adminChoice = adminScanner.next();
             System.out.println("1: Manage Users \n" +
-                    "2: Manage Categories \"" +
+                    "2: Manage Categories \n" +
                     "3: Manage Articles \n" +
                     "4: Manage Tags \n" +
                     "5: Exit");
+            adminChoice = adminScanner.next();
         } while (!adminChoice.matches(constantValue.MENU_REGEX));
         switch (adminChoice) {
             case "1":
@@ -59,10 +58,10 @@ public class adminDashboard {
         Scanner userManagerScan = new Scanner(System.in);
         String userManagerChoice;
         do {
-            userManagerChoice = userManagerScan.next();
             System.out.println("1: Update Users \n" +
-                    "2: Delete User \"" +
+                    "2: Delete User \n" +
                     "3: Back To Admin Dashboard");
+            userManagerChoice = userManagerScan.next();
         } while (!userManagerChoice.matches(constantValue.MENU_REGEX));
         switch (userManagerChoice) {
             case "1":
@@ -80,15 +79,15 @@ public class adminDashboard {
         Scanner userUpdateScan = new Scanner(System.in);
         String userUpdateChoice;
         do {
-            userUpdateChoice = userUpdateScan.next();
             System.out.println("1: Update Roll \n" +
                     "2: Update User Name \n" +
                     "3: Update User Sessions \n" +
                     "4: Back To Admin Dashboard");
+            userUpdateChoice = userUpdateScan.next();
         } while (!userUpdateChoice.matches(constantValue.MENU_REGEX));
         switch (userUpdateChoice) {
             case "1":
-                editUser.editUser();
+                editUser.editRoll();
                 break;
             case "2":
                 userRepository.deleteUser();
@@ -145,7 +144,7 @@ public class adminDashboard {
                 article.editArticle();
                 break;
             case "3":
-                articleRepository.deleteArticle();
+                article.deleteArticle();
                 break;
             case "4":
                 break;
@@ -153,16 +152,6 @@ public class adminDashboard {
     }
 
     private static void tagManager() {
-
-    }
-
-    private static void writerDashboard(List<userEntity> resUser) {
-        dashboardMessage(resUser);
-
-    }
-
-    private static void readerDashboard(List<userEntity> resUser) {
-        dashboardMessage(resUser);
 
     }
 

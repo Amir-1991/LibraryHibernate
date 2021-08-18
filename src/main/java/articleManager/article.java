@@ -50,6 +50,27 @@ public class article {
         articleRepository.editArticle(editArticle);
     }
 
+    public static void deleteArticle(){
+        Scanner scanner = new Scanner(System.in);
+        List<String> deleteArticle = new ArrayList<>();
+        showSignInMessage("Article Name");
+        deleteArticle.add(0,scanner.next());
+        showSignInMessage("Brief");
+        deleteArticle.add(1,scanner.next());
+        showSignInMessage("Content");
+        deleteArticle.add(2,scanner.next());
+        System.out.println("Do You Want To Change Article Published ? y/n");
+        String changePublish = scanner.next();
+        while (changePublish.matches(constantValue.NAME_REGEX)){
+            if (changePublish.equals("y")){
+                deleteArticle.add(3,"change");
+            }else if (changePublish.equals("n")){
+                deleteArticle.add(3,"notChange");
+            }
+        }
+        articleRepository.deleteArticle(deleteArticle);
+    }
+
     public static void showSignInMessage(String inputMsg) {
         System.out.println("Please Enter Your " + inputMsg);
     }

@@ -1,6 +1,7 @@
 package userManager;
 
 import config.constantValue;
+import entity.userEntity;
 import repository.rollRepository;
 import repository.userRepository;
 
@@ -9,6 +10,31 @@ import java.util.List;
 import java.util.Scanner;
 
 public class editUser {
+
+    public static void editRoll() {
+        Scanner scanner = new Scanner(System.in);
+        List<String> editRollAdmin = new ArrayList<>();
+        List<String> rollEntityList = rollRepository.loadRoll();
+        showEditUserMessage("User Name");
+        editRollAdmin.add(0, scanner.next());
+        List<userEntity> resList = userRepository.load(editRollAdmin);
+        System.out.println("Your User Selection Rolls Is: " + resList.get(0).getRollTitle() + "\n");
+        String adminChoice;
+        do {
+            System.out.println("Choice Roll: \n");
+            for (int rolls = 0; rolls < rollEntityList.size(); rolls++) {
+                System.out.println((rolls + 1) + ": " + rollEntityList.get(rolls));
+            }
+            adminChoice = scanner.next();
+            if (adminChoice.equals("1")) {
+                editRollAdmin.add(1, rollEntityList.get(0));
+            } else if (adminChoice.equals("2")) {
+                editRollAdmin.add(1, rollEntityList.get(1));
+            } else System.out.println("Your Input Value Not Valid");
+        } while (!adminChoice.matches(constantValue.MENU_REGEX));
+        userRepository.updateUserRoll(editRollAdmin);
+    }
+
     public static void editUser() {
         Scanner scanner = new Scanner(System.in);
         List<String> editUser = new ArrayList<>();
@@ -42,10 +68,9 @@ public class editUser {
                 break;
             } else System.out.println("Your Operation Not Valid");
         }
-        userRepository.updateUser(editUser);
     }
 
     public static void showEditUserMessage(String inputMsg) {
-        System.out.println("Please Enter Your " + inputMsg);
+        System.out.println("Please Enter " + inputMsg);
     }
 }

@@ -36,18 +36,14 @@ public class userRepository {
         return resList;
     }
 
-    public static void updateUser(List<String> editUser){
+    public static void updateUserRoll(List<String> editRollAdmin) {
         Configuration configuration = new Configuration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("select use.rollTitle from userEntity use where use.userName like :userName");
-        query.setParameter("userName", editUser.get(0));
-//        String currentRoll=
-        System.out.println(query.getResultList());
-        Query queryUpdate = session.createQuery("update userEntity use set use.userName =:userName,use.password =:password,use.rollTitle=:rollTitle");
-        queryUpdate.setParameter("userName", editUser.get(0));
-        List<userEntity> resList = query.getResultList();
+        Query query = session.createQuery("update userEntity use set use.rollTitle=:rollTitle where use.userName=:userName");
+        query.setParameter("userName", editRollAdmin.get(0));
+        query.setParameter("rollTitle", editRollAdmin.get(1));
         transaction.commit();
         session.close();
     }

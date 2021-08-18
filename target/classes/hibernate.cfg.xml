@@ -7,18 +7,21 @@
     <session-factory>
 
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://172.17.0.4:3306/library</property>
+        <property name="connection.url">jdbc:mysql://172.17.0.6:3306/library</property>
         <property name="connection.username">root</property>
         <property name="connection.password">123</property>
 
-        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
         <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
         <property name="current_session_context_class">thread</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
+        <mapping class="entity.tagEntity"/>
         <mapping class="entity.userEntity"/>
         <mapping class="entity.rollEntity"/>
+        <mapping class="entity.articleEntity"/>
+        <mapping class="entity.categoryEntity"/>
 
 
     </session-factory>
