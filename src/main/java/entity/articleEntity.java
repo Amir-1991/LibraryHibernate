@@ -13,10 +13,10 @@ public class articleEntity {
     @Column(name = "ARTICLE_ID")
     private Long id;
 
-    @ManyToMany(targetEntity = articleEntity.class, cascade = { CascadeType.ALL })
+    @ManyToMany(targetEntity = articleEntity.class, cascade = {CascadeType.ALL})
     @JoinTable(name = "ARTICLE_TAG",
-            joinColumns = { @JoinColumn(name = "ARTICLE_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "TAG_ID") })
+            joinColumns = {@JoinColumn(name = "ARTICLE_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "TAG_ID")})
     private List<tagEntity> tag;
 
     @Column(name = "TITLE")
@@ -34,6 +34,12 @@ public class articleEntity {
     @Column(name = "IS_PUBLISHED")
     private boolean isPublished;
 
+    @Column(name = "PUBLISHED_DATE")
+    private LocalDate publishedDate;
+
+    @Column(name = "LAST_UPDATE_DATE")
+    private LocalDate lastUpdateDate;
+
     public articleEntity() {
     }
 
@@ -41,12 +47,16 @@ public class articleEntity {
                          String brief,
                          String content,
                          LocalDate creatDate,
-                         boolean isPublished) {
+                         boolean isPublished,
+                         LocalDate publishedDate,
+                         LocalDate lastUpdateDate) {
         this.title = title;
         this.brief = brief;
         this.content = content;
         this.creatDate = creatDate;
         this.isPublished = isPublished;
+        this.publishedDate = publishedDate;
+        this.lastUpdateDate = lastUpdateDate;
     }
 
     @Override
@@ -58,6 +68,8 @@ public class articleEntity {
                 ", content='" + content + '\'' +
                 ", creatDate=" + creatDate +
                 ", isPublished=" + isPublished +
+                ", publishedDate=" + publishedDate +
+                ", lastUpdateDate=" + lastUpdateDate +
                 '}';
     }
 
@@ -107,5 +119,21 @@ public class articleEntity {
 
     public void setPublished(boolean published) {
         isPublished = published;
+    }
+
+    public LocalDate getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(LocalDate publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public LocalDate getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(LocalDate lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
     }
 }

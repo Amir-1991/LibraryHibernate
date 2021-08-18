@@ -88,7 +88,7 @@ public class adminDashboard {
         } while (!userUpdateChoice.matches(constantValue.MENU_REGEX));
         switch (userUpdateChoice) {
             case "1":
-                userRepository.updateUser();
+                editUser.editUser();
                 break;
             case "2":
                 userRepository.deleteUser();
@@ -142,7 +142,7 @@ public class adminDashboard {
                 article.creatArticle();
                 break;
             case "2":
-                articleRepository.editArticle();
+                article.editArticle();
                 break;
             case "3":
                 articleRepository.deleteArticle();
