@@ -15,14 +15,13 @@
         <property name="format_sql">false</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="current_session_context_class">thread</property>
-        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
         <mapping class="entity.tagEntity"/>
         <mapping class="entity.userEntity"/>
         <mapping class="entity.rollEntity"/>
         <mapping class="entity.articleEntity"/>
         <mapping class="entity.categoryEntity"/>
-
 
     </session-factory>
 

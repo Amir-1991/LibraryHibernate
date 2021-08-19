@@ -1,7 +1,7 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "TAG")
@@ -12,11 +12,8 @@ public class tagEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToMany(targetEntity = articleEntity.class, cascade = { CascadeType.ALL })
-    @JoinTable(name = "ARTICLE_TAG",
-            joinColumns = { @JoinColumn(name = "TAG_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "ARTICLE_ID") })
-    private List<articleEntity> article;
+    @OneToMany(mappedBy = "tagEntityId")
+    Set<tagArticleEntity> registerTag;
 
     @Column(name = "TAG_TITLE")
     private String tagTitle;

@@ -6,6 +6,7 @@ import config.constantValue;
 import entity.userEntity;
 import repository.categoryRepository;
 import repository.userRepository;
+import tag.tag;
 
 import java.util.List;
 import java.util.Scanner;
@@ -104,18 +105,18 @@ public class adminDashboard {
         Scanner categoryScan = new Scanner(System.in);
         String categoryChoice;
         do {
-            categoryChoice = categoryScan.next();
             System.out.println("1: Creat Category \n" +
-                    "2: Edit Category \"" +
-                    "3: Delete Category \"" +
+                    "2: Edit Category \n" +
+                    "3: Delete Category \n" +
                     "4: Back To Admin Dashboard");
+            categoryChoice = categoryScan.next();
         } while (!categoryChoice.matches(constantValue.MENU_REGEX));
         switch (categoryChoice) {
             case "1":
                 category.creatCategory();
                 break;
             case "2":
-                categoryRepository.editCategory();
+                category.editCategory();
                 break;
             case "3":
                 categoryRepository.deleteCategory();
@@ -129,12 +130,12 @@ public class adminDashboard {
         Scanner articleScan = new Scanner(System.in);
         String artManageChoice;
         do {
-            artManageChoice = articleScan.next();
             System.out.println("1: Creat Article \n" +
-                    "2: Edit Article \"" +
-                    "3: Delete Article \"" +
-                    "4: Attach Tag Article \"" +
+                    "2: Edit Article \n" +
+                    "3: Delete Article \n" +
+                    "4: Attach Tag Article \n" +
                     "5: Back To Admin Dashboard");
+            artManageChoice = articleScan.next();
         } while (!artManageChoice.matches(constantValue.MENU_REGEX));
         switch (artManageChoice) {
             case "1":
@@ -152,7 +153,24 @@ public class adminDashboard {
     }
 
     private static void tagManager() {
-
+        Scanner tagScan = new Scanner(System.in);
+        String tagManageChoice;
+        do {
+            System.out.println("1: Creat Tag \n" +
+                    "2: Attach To Article \n" +
+                    "3: Back To Admin Dashboard");
+            tagManageChoice = tagScan.next();
+        } while (!tagManageChoice.matches(constantValue.MENU_REGEX));
+        switch (tagManageChoice) {
+            case "1":
+                tag.creatTag();
+                break;
+            case "2":
+                tag.attachTag();
+                break;
+            case "3":
+                break;
+        }
     }
 
     private static void dashboardMessage(List<userEntity> resUser) {

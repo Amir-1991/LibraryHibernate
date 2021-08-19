@@ -2,7 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "ARTICLE")
@@ -13,11 +13,8 @@ public class articleEntity {
     @Column(name = "ARTICLE_ID")
     private Long id;
 
-    @ManyToMany(targetEntity = articleEntity.class, cascade = {CascadeType.ALL})
-    @JoinTable(name = "ARTICLE_TAG",
-            joinColumns = {@JoinColumn(name = "ARTICLE_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "TAG_ID")})
-    private List<tagEntity> tag;
+    @OneToMany(mappedBy = "articleEntityId")
+    Set<tagArticleEntity> registerArt;
 
     @Column(name = "TITLE")
     private String title;

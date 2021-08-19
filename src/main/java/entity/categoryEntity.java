@@ -14,15 +14,15 @@ public class categoryEntity {
     @Column(name = "TITLE",length = 30)
     private String title;
 
-    @Column(name = "DESC",length = 100)
-    private String desc;
+    @Column(name = "DESCRIPTION",length = 100)
+    private String description;
 
     public categoryEntity() {
     }
 
-    public categoryEntity(String title, String desc) {
+    public categoryEntity(String title, String description) {
         this.title = title;
-        this.desc = desc;
+        this.description = description;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class categoryEntity {
         return "categoryEntity{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", desc=" + desc +
+                ", description='" + description + '\'' +
                 '}';
     }
 
@@ -51,10 +51,10 @@ public class categoryEntity {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDesc(String description) {
+        this.description = description;
     }
 }

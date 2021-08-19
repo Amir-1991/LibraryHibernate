@@ -36,6 +36,18 @@ public class articleRepository {
         session.close();
             sessionFactory.close();
     }
+    public static List<articleEntity> seeAll(){
+        Configuration configuration = new Configuration().configure();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("select art from articleEntity art");
+        List<articleEntity> resList = query.getResultList();
+        transaction.commit();
+        session.close();
+        sessionFactory.close();
+        return resList;
+    }
 
     public static void deleteArticle(List<String> deleteArticle) {
     }
