@@ -1,5 +1,6 @@
 package repository;
 
+import entity.articleEntity;
 import entity.tagEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +24,7 @@ public class tagRepository {
         }
     }
 
-    public static List<tagEntity> seeAll(){
+    public static List<tagEntity> seeAll() {
         Configuration configuration = new Configuration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();

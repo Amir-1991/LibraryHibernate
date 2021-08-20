@@ -22,7 +22,7 @@ public class tag {
 
     public static void attachTag() {
         Scanner scanner = new Scanner(System.in);
-       List<String> tagArticle = new ArrayList<>();
+        List<String> tagArticle = new ArrayList<>();
         List<articleEntity> articleList = articleRepository.seeAll();
         System.out.println("Row \t Article ID \t Article Title ");
         for (int artCounter = 0; artCounter < articleList.size(); artCounter++) {
@@ -30,7 +30,7 @@ public class tag {
         }
         int artScan = Integer.parseInt(scanner.next());
         System.out.println("Please Enter Your Article Name Row ");
-        tagArticle.add(0, String.valueOf(articleList.get(artScan-1).getId()));
+        tagArticle.add(0, String.valueOf(articleList.get(artScan - 1).getId()));
         List<tagEntity> tagList = tagRepository.seeAll();
         System.out.println("Row \t Tag ID \t Tag Title ");
         for (int tagCounter = 0; tagCounter < tagList.size(); tagCounter++) {
@@ -38,7 +38,7 @@ public class tag {
         }
         System.out.println("Please Enter Your tag Name Available In Above List");
         int tagScan = Integer.parseInt(scanner.next());
-        tagArticle.add(1, String.valueOf(articleList.get(tagScan-1).getId()));
+        tagArticle.add(1, String.valueOf(articleList.get(tagScan - 1).getId()));
 
     }
 

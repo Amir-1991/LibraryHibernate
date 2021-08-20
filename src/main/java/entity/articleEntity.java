@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,8 +14,8 @@ public class articleEntity {
     @Column(name = "ARTICLE_ID")
     private Long id;
 
-    @OneToMany(mappedBy = "articleEntityId")
-    Set<tagArticleEntity> registerArt;
+    @ManyToMany(cascade = { CascadeType.ALL })
+    private Set<tagEntity> tagEntities = new HashSet<>();
 
     @Column(name = "TITLE")
     private String title;
@@ -46,7 +47,8 @@ public class articleEntity {
                          LocalDate creatDate,
                          boolean isPublished,
                          LocalDate publishedDate,
-                         LocalDate lastUpdateDate) {
+                         LocalDate lastUpdateDate,
+                         Set<tagEntity> tagEntities) {
         this.title = title;
         this.brief = brief;
         this.content = content;
@@ -54,6 +56,7 @@ public class articleEntity {
         this.isPublished = isPublished;
         this.publishedDate = publishedDate;
         this.lastUpdateDate = lastUpdateDate;
+        this.tagEntities = tagEntities;
     }
 
     @Override
@@ -67,6 +70,7 @@ public class articleEntity {
                 ", isPublished=" + isPublished +
                 ", publishedDate=" + publishedDate +
                 ", lastUpdateDate=" + lastUpdateDate +
+                ", tagEntities=" + tagEntities +
                 '}';
     }
 
@@ -132,5 +136,13 @@ public class articleEntity {
 
     public void setLastUpdateDate(LocalDate lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public Set<tagEntity> getTagEntities() {
+        return tagEntities;
+    }
+
+    public void setTagEntities(Set<tagEntity> tagEntities) {
+        this.tagEntities = tagEntities;
     }
 }

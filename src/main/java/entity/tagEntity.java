@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,11 +13,11 @@ public class tagEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "tagEntityId")
-    Set<tagArticleEntity> registerTag;
-
     @Column(name = "TAG_TITLE")
     private String tagTitle;
+//
+//    @ManyToMany(mappedBy = "tagEntities")
+//    private Set<articleEntity> articleEntities = new HashSet<>();
 
     public tagEntity() {
     }
