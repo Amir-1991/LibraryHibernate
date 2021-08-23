@@ -1,7 +1,6 @@
 package repository;
 
-import entity.articleEntity;
-import entity.tagEntity;
+import entity.CategoryEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,30 +9,34 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.Query;
 import java.util.List;
 
-public class tagRepository {
-    public static void save(tagEntity newTag) {
+public class CategoryRepository {
+
+    public static void save(CategoryEntity newCategory) {
         Configuration configuration = new Configuration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(newTag);
+            session.save(newCategory);
             transaction.commit();
         } finally {
             sessionFactory.close();
         }
     }
 
-    public static List<tagEntity> seeAll() {
+    public static void editCategory(List<String> editCategory) {
         Configuration configuration = new Configuration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("select tag from tagEntity tag");
-        List<tagEntity> resList = query.getResultList();
+        Query query = session.createQuery("update CategoryEntity cat set cat.title=:newTitle, cat.description=:newDesc where cat.title=:currentTitle");
+        query.setParameter("currentTitle", editCategory.get(0));
+        query.setParameter("newTitle", editCategory.get(1));
+        query.setParameter("newDesc", editCategory.get(2));
         transaction.commit();
         session.close();
-        sessionFactory.close();
-        return resList;
+    }
+
+    public static void deleteCategory() {
     }
 }

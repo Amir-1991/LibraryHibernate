@@ -1,6 +1,6 @@
 package config;
 
-public class constantValue {
+public class ConstantValue {
 
     public static String NATIONAL_CODE_REGEX = "\\d{10}";
     public static String PHONE_NUMBER_REGEX = "\\d{11}";

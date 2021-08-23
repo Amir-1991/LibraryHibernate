@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "TAG")
-public class tagEntity {
+public class TagEntity {
 
     @Id
     @Column(name = "ID",length = 5)
@@ -19,10 +19,10 @@ public class tagEntity {
 //    @ManyToMany(mappedBy = "tagEntities")
 //    private Set<articleEntity> articleEntities = new HashSet<>();
 
-    public tagEntity() {
+    public TagEntity() {
     }
 
-    public tagEntity(String tagTitle) {
+    public TagEntity(String tagTitle) {
         this.tagTitle = tagTitle;
     }
 

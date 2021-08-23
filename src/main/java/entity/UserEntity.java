@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "USER")
-public class userEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,10 +36,10 @@ public class userEntity {
     @Column(name = "ROLL_TITLE")
     private String rollTitle;
 
-    public userEntity() {
+    public UserEntity() {
     }
 
-    public userEntity(String userName,
+    public UserEntity(String userName,
                       String firstName,
                       String lastName,
                       String nationalCode,

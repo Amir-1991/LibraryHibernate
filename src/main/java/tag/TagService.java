@@ -1,29 +1,29 @@
 package tag;
 
-import entity.articleEntity;
-import entity.tagEntity;
-import repository.articleRepository;
-import repository.tagRepository;
+import entity.ArticleEntity;
+import entity.TagEntity;
+import repository.ArticleRepository;
+import repository.TagRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class tag {
+public class TagService {
 
     public static void creatTag() {
         Scanner scanner = new Scanner(System.in);
-        tagEntity newTag = new tagEntity();
+        TagEntity newTag = new TagEntity();
         showSignInMessage("Tag Title");
         newTag.setTagTitle(scanner.next());
-        tagRepository.save(newTag);
+        TagRepository.save(newTag);
         System.out.println("Congratulations Your Category Has Been Created ");
     }
 
     public static void attachTag() {
         Scanner scanner = new Scanner(System.in);
         List<String> tagArticle = new ArrayList<>();
-        List<articleEntity> articleList = articleRepository.seeAll();
+        List<ArticleEntity> articleList = ArticleRepository.seeAll();
         System.out.println("Row \t Article ID \t Article Title ");
         for (int artCounter = 0; artCounter < articleList.size(); artCounter++) {
             System.out.println((artCounter + 1) + ":\t \t \t" + articleList.get(artCounter).getId() + "\t \t \t \t" + articleList.get(artCounter).getTitle());
@@ -31,7 +31,7 @@ public class tag {
         int artScan = Integer.parseInt(scanner.next());
         System.out.println("Please Enter Your Article Name Row ");
         tagArticle.add(0, String.valueOf(articleList.get(artScan - 1).getId()));
-        List<tagEntity> tagList = tagRepository.seeAll();
+        List<TagEntity> tagList = TagRepository.seeAll();
         System.out.println("Row \t Tag ID \t Tag Title ");
         for (int tagCounter = 0; tagCounter < tagList.size(); tagCounter++) {
             System.out.println((tagCounter + 1) + ":\t \t \t" + tagList.get(tagCounter).getId() + " \t   \t " + tagList.get(tagCounter).getTagTitle());

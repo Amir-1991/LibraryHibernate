@@ -1,28 +1,28 @@
 package userManager;
 
-import articleManager.article;
-import categoryManager.category;
-import config.constantValue;
-import entity.userEntity;
-import repository.categoryRepository;
-import repository.userRepository;
-import tag.tag;
+import articleManager.ArticleService;
+import categoryManager.CategoryService;
+import config.ConstantValue;
+import entity.UserEntity;
+import repository.CategoryRepository;
+import repository.UserRepository;
+import tag.TagService;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class adminDashboard {
-    public static void mainDashboard(List<userEntity> resUser) {
+public class Dashboard {
+    public static void mainDashboard(List<UserEntity> resUser) {
         if (resUser.get(0).getRollTitle().equals("admin")) {
             adminDashboard(resUser);
         } else if (resUser.get(0).getRollTitle().equals("writer")) {
-            userDashboard.writerDashboard(resUser);
+            UserDashboard.writerDashboard(resUser);
         } else if (resUser.get(0).getRollTitle().equals("reader")) {
-            userDashboard.readerDashboard(resUser);
+            UserDashboard.readerDashboard(resUser);
         }
     }
 
-    private static void adminDashboard(List<userEntity> resUser) {
+    private static void adminDashboard(List<UserEntity> resUser) {
         dashboardMessage(resUser);
         Scanner adminScanner = new Scanner(System.in);
         String adminChoice;
@@ -33,7 +33,7 @@ public class adminDashboard {
                     "4: Manage Tags \n" +
                     "5: Exit");
             adminChoice = adminScanner.next();
-        } while (!adminChoice.matches(constantValue.MENU_REGEX));
+        } while (!adminChoice.matches(ConstantValue.MENU_REGEX));
         switch (adminChoice) {
             case "1":
                 userManager();
@@ -48,7 +48,7 @@ public class adminDashboard {
                 tagManager();
                 break;
             case "5":
-                userSignIn.logInUser();
+                UserSignIn.logInUser();
                 break;
             default:
                 break;
@@ -63,13 +63,13 @@ public class adminDashboard {
                     "2: Delete User \n" +
                     "3: Back To Admin Dashboard");
             userManagerChoice = userManagerScan.next();
-        } while (!userManagerChoice.matches(constantValue.MENU_REGEX));
+        } while (!userManagerChoice.matches(ConstantValue.MENU_REGEX));
         switch (userManagerChoice) {
             case "1":
                 updateUser();
                 break;
             case "2":
-                userRepository.deleteUser();
+                UserRepository.deleteUser();
                 break;
             case "3":
                 break;
@@ -85,16 +85,16 @@ public class adminDashboard {
                     "3: Update User Sessions \n" +
                     "4: Back To Admin Dashboard");
             userUpdateChoice = userUpdateScan.next();
-        } while (!userUpdateChoice.matches(constantValue.MENU_REGEX));
+        } while (!userUpdateChoice.matches(ConstantValue.MENU_REGEX));
         switch (userUpdateChoice) {
             case "1":
-                editUser.editRoll();
+                EditUser.editRoll();
                 break;
             case "2":
-                userRepository.deleteUser();
+                UserRepository.deleteUser();
                 break;
             case "3":
-                userRepository.updateUserSession();
+                UserRepository.updateUserSession();
                 break;
             case "4":
                 break;
@@ -110,16 +110,16 @@ public class adminDashboard {
                     "3: Delete Category \n" +
                     "4: Back To Admin Dashboard");
             categoryChoice = categoryScan.next();
-        } while (!categoryChoice.matches(constantValue.MENU_REGEX));
+        } while (!categoryChoice.matches(ConstantValue.MENU_REGEX));
         switch (categoryChoice) {
             case "1":
-                category.creatCategory();
+                CategoryService.creatCategory();
                 break;
             case "2":
-                category.editCategory();
+                CategoryService.editCategory();
                 break;
             case "3":
-                categoryRepository.deleteCategory();
+                CategoryRepository.deleteCategory();
                 break;
             case "4":
                 break;
@@ -136,16 +136,16 @@ public class adminDashboard {
                     "4: Attach Tag Article \n" +
                     "5: Back To Admin Dashboard");
             artManageChoice = articleScan.next();
-        } while (!artManageChoice.matches(constantValue.MENU_REGEX));
+        } while (!artManageChoice.matches(ConstantValue.MENU_REGEX));
         switch (artManageChoice) {
             case "1":
-                article.creatArticle();
+                ArticleService.creatArticle();
                 break;
             case "2":
-                article.editArticle();
+                ArticleService.editArticle();
                 break;
             case "3":
-                article.deleteArticle();
+                ArticleService.deleteArticle();
                 break;
             case "4":
                 break;
@@ -160,20 +160,20 @@ public class adminDashboard {
                     "2: Attach To Article \n" +
                     "3: Back To Admin Dashboard");
             tagManageChoice = tagScan.next();
-        } while (!tagManageChoice.matches(constantValue.MENU_REGEX));
+        } while (!tagManageChoice.matches(ConstantValue.MENU_REGEX));
         switch (tagManageChoice) {
             case "1":
-                tag.creatTag();
+                TagService.creatTag();
                 break;
             case "2":
-                tag.attachTag();
+                TagService.attachTag();
                 break;
             case "3":
                 break;
         }
     }
 
-    private static void dashboardMessage(List<userEntity> resUser) {
+    private static void dashboardMessage(List<UserEntity> resUser) {
         System.out.println("Welcome To Your Home " + resUser.get(0).getUserName() + " \n" +
                 "Dear " + resUser.get(0).getFirstName() + " " + resUser.get(0).getLastName() + " You Are " + resUser.get(0).getRollTitle());
     }

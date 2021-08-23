@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "ARTICLE")
-public class articleEntity {
+public class ArticleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +15,7 @@ public class articleEntity {
     private Long id;
 
     @ManyToMany(cascade = { CascadeType.ALL })
-    private Set<tagEntity> tagEntities = new HashSet<>();
+    private Set<TagEntity> tagEntities = new HashSet<>();
 
     @Column(name = "TITLE")
     private String title;
@@ -38,17 +38,17 @@ public class articleEntity {
     @Column(name = "LAST_UPDATE_DATE")
     private LocalDate lastUpdateDate;
 
-    public articleEntity() {
+    public ArticleEntity() {
     }
 
-    public articleEntity(String title,
+    public ArticleEntity(String title,
                          String brief,
                          String content,
                          LocalDate creatDate,
                          boolean isPublished,
                          LocalDate publishedDate,
                          LocalDate lastUpdateDate,
-                         Set<tagEntity> tagEntities) {
+                         Set<TagEntity> tagEntities) {
         this.title = title;
         this.brief = brief;
         this.content = content;
@@ -138,11 +138,11 @@ public class articleEntity {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Set<tagEntity> getTagEntities() {
+    public Set<TagEntity> getTagEntities() {
         return tagEntities;
     }
 
-    public void setTagEntities(Set<tagEntity> tagEntities) {
+    public void setTagEntities(Set<TagEntity> tagEntities) {
         this.tagEntities = tagEntities;
     }
 }

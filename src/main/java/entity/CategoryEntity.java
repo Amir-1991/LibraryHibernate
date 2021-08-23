@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CATEGORY")
-public class categoryEntity {
+public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,10 +17,10 @@ public class categoryEntity {
     @Column(name = "DESCRIPTION",length = 100)
     private String description;
 
-    public categoryEntity() {
+    public CategoryEntity() {
     }
 
-    public categoryEntity(String title, String description) {
+    public CategoryEntity(String title, String description) {
         this.title = title;
         this.description = description;
     }

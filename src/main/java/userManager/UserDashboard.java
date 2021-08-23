@@ -1,14 +1,14 @@
 package userManager;
 
-import articleManager.article;
-import config.constantValue;
-import entity.userEntity;
+import articleManager.ArticleService;
+import config.ConstantValue;
+import entity.UserEntity;
 import java.util.List;
 import java.util.Scanner;
 
-public class userDashboard {
+public class UserDashboard {
 
-    public static void writerDashboard(List<userEntity> resUser) {
+    public static void  writerDashboard(List<UserEntity> resUser) {
         dashboardMessage(resUser);
         Scanner writerScanner = new Scanner(System.in);
         String writerChoice;
@@ -18,13 +18,13 @@ public class userDashboard {
                     "2: Setting \n" +
                     "3: Exit");
             writerChoice = writerScanner.next();
-        } while (!writerChoice.matches(constantValue.MENU_REGEX));
+        } while (!writerChoice.matches(ConstantValue.MENU_REGEX));
         switch (writerChoice) {
             case "1":
-                article.creatArticle();
+                ArticleService.creatArticle();
                 break;
             case "2":
-                article.editArticle();
+                ArticleService.editArticle();
                 break;
             case "3":
                 setting();
@@ -39,13 +39,13 @@ public class userDashboard {
     }
 
 
-    public static void readerDashboard(List<userEntity> resUser) {
+    public static void readerDashboard(List<UserEntity> resUser) {
         dashboardMessage(resUser);
 
 
     }
 
-    private static void dashboardMessage(List<userEntity> resUser) {
+    private static void dashboardMessage(List<UserEntity> resUser) {
         System.out.println("Welcome To Your Home " + resUser.get(0).getUserName() + " \n" +
                 "Dear " + resUser.get(0).getFirstName() + " " + resUser.get(0).getLastName() + " You Are " + resUser.get(0).getRollTitle());
     }

@@ -17,11 +17,11 @@
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
-        <mapping class="entity.tagEntity"/>
-        <mapping class="entity.userEntity"/>
-        <mapping class="entity.rollEntity"/>
-        <mapping class="entity.articleEntity"/>
-        <mapping class="entity.categoryEntity"/>
+        <mapping class="entity.TagEntity"/>
+        <mapping class="entity.UserEntity"/>
+        <mapping class="entity.RollEntity"/>
+        <mapping class="entity.ArticleEntity"/>
+        <mapping class="entity.CategoryEntity"/>
 
     </session-factory>
 

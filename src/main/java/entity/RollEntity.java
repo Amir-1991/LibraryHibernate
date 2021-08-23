@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ROLL")
-public class rollEntity {
+public class RollEntity {
 
     @Id
     @Column(name = "ID", length = 1)
@@ -14,10 +14,10 @@ public class rollEntity {
     @Column(name = "ROLL_TITLE")
     private String rollTitle;
 
-    public rollEntity() {
+    public RollEntity() {
     }
 
-    public rollEntity(String rollTitle) {
+    public RollEntity(String rollTitle) {
         this.rollTitle = rollTitle;
     }
 

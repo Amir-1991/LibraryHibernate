@@ -1,7 +1,7 @@
 package repository;
 
-import entity.articleEntity;
-import entity.userEntity;
+import entity.ArticleEntity;
+import entity.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,8 +10,8 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.Query;
 import java.util.List;
 
-public class articleRepository {
-    public static void save(articleEntity newArticle) {
+public class ArticleRepository {
+    public static void save(ArticleEntity newArticle) {
         Configuration configuration = new Configuration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
@@ -31,18 +31,18 @@ public class articleRepository {
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("");
         query.setParameter("userName", editArticle.get(0));
-        List<userEntity> resList = query.getResultList();
+        List<UserEntity> resList = query.getResultList();
         transaction.commit();
         session.close();
             sessionFactory.close();
     }
-    public static List<articleEntity> seeAll(){
+    public static List<ArticleEntity> seeAll(){
         Configuration configuration = new Configuration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("select art from articleEntity art");
-        List<articleEntity> resList = query.getResultList();
+        Query query = session.createQuery("select art from ArticleEntity art");
+        List<ArticleEntity> resList = query.getResultList();
         transaction.commit();
         session.close();
         sessionFactory.close();

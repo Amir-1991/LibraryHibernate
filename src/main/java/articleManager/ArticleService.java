@@ -1,18 +1,18 @@
 package articleManager;
 
-import config.constantValue;
-import entity.articleEntity;
-import repository.articleRepository;
+import config.ConstantValue;
+import entity.ArticleEntity;
+import repository.ArticleRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class article {
+public class ArticleService {
     public static void creatArticle(){
         Scanner scanner = new Scanner(System.in);
-        articleEntity newArticle = new articleEntity();
+        ArticleEntity newArticle = new ArticleEntity();
         showSignInMessage("Article Name");
         newArticle.setTitle(scanner.next());
         showSignInMessage("Brief");
@@ -23,7 +23,7 @@ public class article {
         newArticle.setPublished(false);
         newArticle.setPublishedDate(LocalDate.now());
         newArticle.setLastUpdateDate(LocalDate.now());
-        articleRepository.save(newArticle);
+        ArticleRepository.save(newArticle);
         System.out.println("Congratulations Your Article Has Been Created \n" +
                 "NOTE: Your Article Now Is NonAccessibility For Another Users" +
                 "      You Can Change It In Setting -> Edit Article");
@@ -40,14 +40,14 @@ public class article {
         editArticle.add(2,scanner.next());
         System.out.println("Do You Want To Change Article Published ? y/n");
         String changePublish = scanner.next();
-        while (changePublish.matches(constantValue.NAME_REGEX)){
+        while (changePublish.matches(ConstantValue.NAME_REGEX)){
             if (changePublish.equals("y")){
                 editArticle.add(3,"change");
             }else if (changePublish.equals("n")){
                 editArticle.add(3,"notChange");
             }
         }
-        articleRepository.editArticle(editArticle);
+        ArticleRepository.editArticle(editArticle);
     }
 
     public static void deleteArticle(){
@@ -61,14 +61,14 @@ public class article {
         deleteArticle.add(2,scanner.next());
         System.out.println("Do You Want To Change Article Published ? y/n");
         String changePublish = scanner.next();
-        while (changePublish.matches(constantValue.NAME_REGEX)){
+        while (changePublish.matches(ConstantValue.NAME_REGEX)){
             if (changePublish.equals("y")){
                 deleteArticle.add(3,"change");
             }else if (changePublish.equals("n")){
                 deleteArticle.add(3,"notChange");
             }
         }
-        articleRepository.deleteArticle(deleteArticle);
+        ArticleRepository.deleteArticle(deleteArticle);
     }
 
     public static void showSignInMessage(String inputMsg) {

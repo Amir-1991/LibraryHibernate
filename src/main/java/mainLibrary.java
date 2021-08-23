@@ -1,6 +1,6 @@
-import config.constantValue;
-import userManager.userSignIn;
-import userManager.userSignUp;
+import config.ConstantValue;
+import userManager.UserSignIn;
+import userManager.UserSignUp;
 
 import java.util.Scanner;
 
@@ -12,13 +12,13 @@ public class mainLibrary {
                 "3: Exit ");
         Scanner scanner = new Scanner(System.in);
         String firstOperation = scanner.next();
-        if (firstOperation.matches(constantValue.MENU_REGEX)) {
+        if (firstOperation.matches(ConstantValue.MENU_REGEX)) {
             switch (firstOperation) {
                 case "1":
-                    userSignUp.creatUser();
+                    UserSignUp.creatUser();
                     break;
                 case "2":
-                    userSignIn.logInUser();
+                    UserSignIn.logInUser();
                     break;
                 case "3":
                     System.out.println("GOOD-BYE");
